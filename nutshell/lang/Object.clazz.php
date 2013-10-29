@@ -96,7 +96,7 @@ class Object extends Clazz {
      *                   object.
      */
     public function getObjectProperties() {
-        return new ArrayMap(get_object_vars($this));
+        return new Collection(get_object_vars($this));
     }
 
     

@@ -31,7 +31,7 @@ abstract class Clazz extends stdClass {
      * @throws MethodNotFoundHalt Throws Halt if method doesn't exists.
      */
     public static function  __callStatic($_method_name,  $_args) {
-        throw new MethodNotFound(get_called_class(), $_method_name);
+        throw new MethodNotFound(self::getClazz(true), $_method_name);
     }
 
     /**
@@ -39,9 +39,9 @@ abstract class Clazz extends stdClass {
      * 
      * @return string The class name.
      */
-    public static function getClazz($_with_namespace=FALSE) {
-        $clazz = str_replace('\\','',substr('\\' . get_called_class(), strrpos(get_called_class(), '\\')+1));
-        return $_with_namespace ? get_called_class() : $clazz;
+    public static function getClazz() {
+        $clazz = str_replace('\\', '', substr('\\' . get_called_class(), strrpos(get_called_class(), '\\')+1));
+        return null == $this ? $clazz : get_called_class();
     }
     
     /**
@@ -52,6 +52,6 @@ abstract class Clazz extends stdClass {
      * @return array Default properties of a class.
      */
     public static function getClazzProperties() {
-        return new ArrayMap(get_class_vars(get_called_class()));
+        return new Collection(get_class_vars(self::getClazz(true)));
     }
 }
