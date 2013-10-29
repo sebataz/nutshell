@@ -11,3 +11,5 @@ sebataz <sebastien.rigoni@gmail.com>
 # Features: - class autoloader
             - basic classes
             - object-relational mapping
+            - model-view-controller oriented
+            - request handler
