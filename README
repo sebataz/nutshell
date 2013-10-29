@@ -10,3 +10,4 @@ sebataz <sebastien.rigoni@gmail.com>
 # Description: a php framework
 # Features: - class autoloader
             - basic classes
+            - object-relational mapping
