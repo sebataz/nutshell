@@ -2,10 +2,11 @@ sebataz <sebastien.rigoni@gmail.com>
 --------------------------------------------------------------------------------
                             nutshell a php framework                            
 --------------------------------------------------------------------------------
-                                                         Last updated 04.04.2010                               
+                                                         Last updated 29.10.2013                               
 
 # Author: sebataz <sebastien.rigoni@gmail.com>
 # Date of creation: 04.04.2010
 # Current version: 0.6
 # Description: a php framework
-# Features:
+# Features: - class autoloader
+            - basic classes
