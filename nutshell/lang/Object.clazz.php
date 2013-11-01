@@ -30,7 +30,7 @@ class Object extends Clazz {
      * @throws PropertyNotFoundHalt Throws Halt if property doesn't exist. 
      */
     public function __get($_property_name) {
-            throw new PropertyNotFound($this->getClazz(), $_property_name);
+            throw new PropertyNotFound(self::getClazz(), $_property_name);
     }
     
 
@@ -42,7 +42,7 @@ class Object extends Clazz {
      *              defined for the object, <b>FALSE</b> otherwise.
      */
     public function methodExists($_method_name) {
-        return method_exists(get_called_class(), $_method_name);
+        return method_exists(self::getClazz(), $_method_name);
     }
 
     /**
@@ -70,7 +70,7 @@ class Object extends Clazz {
             return call_user_func_array(array($this, $_method_name), $_args);
         
         // Throws Halt if method not found
-        throw new MethodNotFound(get_called_class(), $_method_name);
+        throw new MethodNotFound(self::getClazz(), $_method_name);
     }
 
     /**
@@ -96,7 +96,7 @@ class Object extends Clazz {
      *                   object.
      */
     public function getObjectProperties() {
-        return new ArrayMap(get_object_vars($this));
+        return new Collection(get_object_vars($this));
     }
 
     
