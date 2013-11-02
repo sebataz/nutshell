@@ -2,7 +2,7 @@
 namespace nutshell\data\db;
 
 use nutshell\lang\Object;
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\query\SelectQuery;
 use nutshell\data\db\query\InsertQuery;
 use nutshell\data\db\query\UpdateQuery;
@@ -51,10 +51,10 @@ class QueryBuilder extends Object {
      * Creates a new InsertQuery for the table defined by <var>$_table</var>.
      * 
      * @param string $_table The table name.
-     * @param ArrayMap $_Values Row's value to insert.
+     * @param Collection $_Values Row's value to insert.
      * @return InsertQuery A <kbd>InsertQuery</kbd>.
      */
-    public function insert($_table, ArrayMap $_Values) {
+    public function insert($_table, Collection $_Values) {
         $Insert = new InsertQuery($this->_Connection->newOperation(), $_table, $_Values);
         
         foreach ($_Values as $key => $value)
@@ -67,10 +67,10 @@ class QueryBuilder extends Object {
      * Creates a new UpdateQuery for the table defined by <var>$_table</var>.
      * 
      * @param string $_table The table name.
-     * @param ArrayMap $_Values Row's values to update.
+     * @param Collection $_Values Row's values to update.
      * @return UpdateQuery A <kbd>UpdateQuery</kbd>.
      */
-    public function update($_table, ArrayMap $_Values) {
+    public function update($_table, Collection $_Values) {
         $Update = new UpdateQuery($this->_Connection->newOperation(), $_table, $_Values);
         
         foreach ($_Values as $key => $value)

@@ -2,7 +2,7 @@
 namespace nutshell\data\file;
 
 use nutshell\lang\Object;
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\IDataSource;
 
 /**
@@ -81,7 +81,7 @@ abstract class File extends Object implements IDataSource {
      * @param string $_path_to_dir Path to directory.
      * @param bool $_list_all If <b>TRUE</b> returns everything, otherwise only
      *                        the visible files.
-     * @return ArrayMap Array map of directory entries (files).
+     * @return Collection Array map of directory entries (files).
      * @throws FileNotFound Thrown if directory is not found.
      */
     public static function ls($_path_to_dir, $_list_all=false) {
@@ -91,7 +91,7 @@ abstract class File extends Object implements IDataSource {
         
         // open dir
         $handle = opendir($_path_to_dir);
-        $List = new ArrayMap();
+        $List = new Collection();
 
         // read dir
         while (false != ($file = readdir($handle))) {

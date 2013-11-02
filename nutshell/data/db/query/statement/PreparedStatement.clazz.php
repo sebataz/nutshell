@@ -1,7 +1,7 @@
 <?php
 namespace nutshell\data\db\query\statement;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\Database;
 use nutshell\data\db\DatabaseOperation;
 
@@ -30,7 +30,7 @@ class PreparedStatement extends SQLQuery {
     /**
      * Holds a collection of parameters bound to this query.
      * 
-     * @var ArrayMap Collection of parameters.
+     * @var Collection Collection of parameters.
      */
     private $_statementParameters;
     
@@ -39,7 +39,7 @@ class PreparedStatement extends SQLQuery {
      */
     public function __construct(DatabaseOperation $_Operation, $_sql_query) {
         parent::__construct($_Operation, $_sql_query);
-        $this->_statementParameters = new ArrayMap();
+        $this->_statementParameters = new Collection();
     }
     
     /**
@@ -51,7 +51,7 @@ class PreparedStatement extends SQLQuery {
      *                            is passed.
      */
     public function addParameter($_param_name, $_param_value, $_param_type = 'string') {        
-        $this->_statementParameters->add($_param_name, new ArrayMap(array($_param_value, $_param_type)));
+        $this->_statementParameters->add($_param_name, new Collection(array($_param_value, $_param_type)));
     }
     
     /**

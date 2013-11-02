@@ -1,7 +1,7 @@
 <?php
 namespace nutshell\data\db\driver\mysql;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\DatabaseOperation;
 
 /**
@@ -20,10 +20,10 @@ class MysqlOperation extends DatabaseOperation {
     }
 
     public function fetch() {
-        $FetchedResult = new ArrayMap();
+        $FetchedResult = new Collection();
         $mysql_resource = $this->execute();
         while ($row = mysql_fetch_array($mysql_resource, MYSQLI_ASSOC)) {
-            $FetchedResult->add(new ArrayMap($row));
+            $FetchedResult->add(new Collection($row));
         }
         
         return $FetchedResult;

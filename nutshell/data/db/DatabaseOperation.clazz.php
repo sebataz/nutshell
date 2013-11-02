@@ -2,7 +2,7 @@
 namespace nutshell\data\db;
 
 use nutshell\lang\Clazz;
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 
 /**
  * <b>DatabaseOperation.clazz.php</b>: database operation
@@ -58,12 +58,11 @@ abstract class DatabaseOperation extends Clazz {
      * columns definition in <var>$_Column</var>.
      * 
      * @param string $_table_name The table name.
-     * @param ArrayMap $_Column The table's column definition.
+     * @param Collection $_Column The table's column definition.
      * @return mixed A boolean value.
      */
-    public function createTable($_table_name, ArrayMap $_Column) {
-        $ColumnDefinition = new ArrayMap();
-        
+    public function createTable($_table_name, Collection $_Column) {
+        $ColumnDefinition = new Collection();
         foreach ($_Column as $column => $type) {
             $ColumnDefinition->add($column . ' ' . $type);
         }
@@ -123,7 +122,7 @@ abstract class DatabaseOperation extends Clazz {
     /**
      * Executes the query and returns the fetched data into a collection.
      * 
-     * @return ArrayMap A collection of rows.
+     * @return Collection A collection of rows.
      */
     abstract public function fetch();
 }

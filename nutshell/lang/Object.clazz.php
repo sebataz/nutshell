@@ -42,7 +42,7 @@ class Object extends Clazz {
      *              defined for the object, <b>FALSE</b> otherwise.
      */
     public function methodExists($_method_name) {
-        return method_exists(self::getClazz(), $_method_name);
+        return method_exists(self::getClazz(true), $_method_name);
     }
 
     /**
@@ -85,14 +85,14 @@ class Object extends Clazz {
     }
 
     /**
-     * <p>Returns an <kbd>ArrayMap</kbd> of the properties of the object. Only 
+     * <p>Returns an <kbd>Collection</kbd> of the properties of the object. Only 
      * <kbd>public</kbd> and <kbd>protected</kbd> are returned, 
      * <kbd>private</kbd> properties are omitted.</p>
      * 
      * <p>If a property has not been assigned a value, it will be returned with a 
      * <b>NULL</b> value.</p>
      * 
-     * @return ArrayMap An <kbd>ArrayMap</kbd> of non-static propertis for the
+     * @return Collection An <kbd>Collection</kbd> of non-static propertis for the
      *                   object.
      */
     public function getObjectProperties() {

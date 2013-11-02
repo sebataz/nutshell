@@ -1,12 +1,12 @@
 <?php
 namespace nutshell\lang\json;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 
 /**
  * <b>JSONArray.clazz.php</b>: JSON array
  * 
- * <p>A <kbd>JSONArray</kbd> is an extension of an <kbd>ArrayMap</kbd> which can
+ * <p>A <kbd>JSONArray</kbd> is an extension of an <kbd>Collection</kbd> which can
  * be instantiated directly from a <kbd>JSON</kbd> string.</p>
  *
  * @package nutshell
@@ -15,10 +15,10 @@ use nutshell\lang\ArrayMap;
  * @since 2013-06-19
  * @version 0.0
  */
-class JSONArray extends ArrayMap {
+class JSONArray extends Collection {
     
     /**
-     * Creates an <kbd>ArrayMap</kbd> from a <kbd>JSON</kbd> array passed as 
+     * Creates an <kbd>Collection</kbd> from a <kbd>JSON</kbd> array passed as 
      * a string.
      * 
      * @param string $_json_string A <kbd>JSON</kbd> array.

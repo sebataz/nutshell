@@ -1,7 +1,7 @@
 <?php
 namespace nutshell\data\db\query;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\DatabaseOperation;
 use nutshell\data\db\query\statement\PagedStatement;
 
@@ -65,7 +65,7 @@ class JointQuery extends PagedStatement {
     /**
      * Collection of table names to be joined in the query.
      * 
-     * @var ArrayMap The joined table names.
+     * @var Collection The joined table names.
      */
     protected $_JoinTable;
     
@@ -78,7 +78,7 @@ class JointQuery extends PagedStatement {
     public function __construct(DatabaseOperation $_Operation, $_table) {
         parent::__construct($_Operation, '');
         $this->_table = $_table;
-        $this->_JoinTable = new ArrayMap();
+        $this->_JoinTable = new Collection();
     }
     
     /**
@@ -93,7 +93,7 @@ class JointQuery extends PagedStatement {
     /**
      * Returns the name of the joined table in the query.
      * 
-     * @return ArrayMap Collection of table names.
+     * @return Collection Collection of table names.
      */
     public function getJoinTable() {
         return $this->_JoinTable;

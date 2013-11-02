@@ -23,7 +23,7 @@ class Map extends Object Implements JSONable {
      * Parses an <kbd>array</kbd> into a <kbd>Map</kbd>, it goes through
      * the array recoursively. If a sub-array is found it will create a new
      * <kbd>Map</kbd> (if associative keys are used), otherwise a new 
-     * <kbd>ArrayMap</kbd> will be creted instead.
+     * <kbd>Collection</kbd> will be creted instead.
      * 
      * @param array $_array An array that can be indexed, associative or mixed.
      */
@@ -39,9 +39,9 @@ class Map extends Object Implements JSONable {
               && !(bool)count(array_filter(array_keys($value), 'is_numeric')) ) 
                 $this->set($key, new Map($value));
             
-            // array with mixed keys set a new ArrayMap
+            // array with mixed keys set a new Collection
             elseif (is_array($value))
-                $this->set($key, new ArrayMap($value));
+                $this->set($key, new Collection($value));
             
             // set property value
             else
@@ -77,15 +77,15 @@ class Map extends Object Implements JSONable {
 
     
     /**
-     * Returns an <kbd>ArrayMap</kbd> of the property of this <kbd>Map</kbd>, it
+     * Returns an <kbd>Collection</kbd> of the property of this <kbd>Map</kbd>, it
      * gets the value of each property accessing the getter method, which could 
      * be overwritten for a child class. So that the value returned is always
      * the actualized one.
      * 
-     * @return ArrayMap An array map.
+     * @return Collection An array map.
      */
-    public function toArrayMap() {
-        $Collection = new ArrayMap();
+    public function toCollection() {
+        $Collection = new Collection();
         
         // set property value to collection item
         foreach ($this->getObjectProperties()->getKeys() as $_property_name)
@@ -95,10 +95,10 @@ class Map extends Object Implements JSONable {
     }
     
     /**
-     * @see ArrayMap::toArray()
+     * @see Collection::toArray()
      */
     public function toArray() {
-        return $this->toArrayMap()->toArray();
+        return $this->toCollection()->toArray();
     }
 
     /**

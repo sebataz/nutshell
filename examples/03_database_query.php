@@ -20,16 +20,15 @@ $Connection = new nutshell\data\db\driver\pdo\PDOConnection('localhost', 'nutshe
 /*
  *  #2. create a new table.
  */
-$TableColumns = new nutshell\lang\ArrayMap();
+$TableColumns = new nutshell\lang\Collection();
 $TableColumns->add('Id', 'INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY');
 $TableColumns->add('Text', 'VARCHAR(200)');
-
 $Connection->newOperation()->createTable('Example', $TableColumns);
 
 /*
  * #3: insert a row
  */
-$ColumnValues = new nutshell\lang\ArrayMap();
+$ColumnValues = new nutshell\lang\Collection();
 $ColumnValues->add('Text', 'entry #0');
 
 $InsertQuery = new nutshell\data\db\query\InsertQuery($Connection->newOperation(), 'Example', $ColumnValues);
@@ -51,7 +50,7 @@ foreach ($Collection as $Row) {
 /*
  * #5: update a row
  */
-$ColumnValues = new nutshell\lang\ArrayMap();
+$ColumnValues = new nutshell\lang\Collection();
 $ColumnValues->add('Text', 'entry #1');
 
 $UpdateQuery = new nutshell\data\db\query\UpdateQuery($Connection->newOperation(), 'Example', $ColumnValues);

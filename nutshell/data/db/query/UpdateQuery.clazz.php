@@ -1,7 +1,7 @@
 <?php
 namespace nutshell\data\db\query;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\DatabaseOperation;
 use nutshell\data\db\query\statement\PagedStatement;
 
@@ -23,9 +23,9 @@ class UpdateQuery extends PagedStatement {
      * 
      * @param DatabaseOperation $_Operation A new database operation.
      * @param string $_table The table name
-     * @param ArrayMap $_Values Columns and value to update.
+     * @param Collection $_Values Columns and value to update.
      */
-    public function __construct(DatabaseOperation $_Operation, $_table, ArrayMap $_Values) {
+    public function __construct(DatabaseOperation $_Operation, $_table, Collection $_Values) {
         // set the table name
         $sql_query = 'UPDATE ' . $_table . ' SET ';
         

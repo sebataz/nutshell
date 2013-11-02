@@ -20,23 +20,23 @@ class Collection extends Iterable implements JSONable {
     
     /**
      * An <kbd>array</kbd> that can be indexed, associative or mixed containing 
-     * the item of the <kbd>ArrayMap</kbd>.
+     * the item of the <kbd>Collection</kbd>.
      * 
      * @var array Array of objects.
      */
     private $_objects = array();
 
     /**
-     * Parses an <kbd>array</kbd> into an <kbd>ArrayMap</kbd>, it goes through
+     * Parses an <kbd>array</kbd> into an <kbd>Collection</kbd>, it goes through
      * the array recoursively. If a sub-array is found it will create a new
-     * <kbd>ArrayMap</kbd> for it.
+     * <kbd>Collection</kbd> for it.
      * 
      * @param array $_array An array that can be indexed, associative or mixed.
      */
     public function __construct(array $_array=array()) {
         foreach ($_array as $key => $value) {
             
-            // Checks if value is an array, in which case it creates a new ArrayMap,
+            // Checks if value is an array, in which case it creates a new Collection,
             // otherwise adds the as a new value.
             if (is_array($value)) {
                 $this->add($key, new self($value));
@@ -87,6 +87,7 @@ class Collection extends Iterable implements JSONable {
         
         return $this->_objects[$_key];
     }
+    
 	
     /**
      * Returns the value at the index defined by <var>$_key</var> or 
@@ -97,7 +98,7 @@ class Collection extends Iterable implements JSONable {
     }
     
     /**
-     * Returns an item of the <kbd>ArrayMap</kbd> at the position identified
+     * Returns an item of the <kbd>Collection</kbd> at the position identified
      * by <var>$_position</var>.
      * 
      * @param int $_position Position to get.
@@ -119,7 +120,7 @@ class Collection extends Iterable implements JSONable {
     }
     
     /**
-     * Returns all the keys or a single of the key of the <kbd>ArrayMap</kbd>.
+     * Returns all the keys or a single of the key of the <kbd>Collection</kbd>.
      * 
      * @param int $_position [optional] If specified, then only key at given
      *                                  position.
@@ -135,15 +136,15 @@ class Collection extends Iterable implements JSONable {
     }
     
     /**
-     * Counts all objects in an <kbd>ArrayMap</kbd>.
-     * @return int The number of objects in <kbd>ArrayMap</kbd>.
+     * Counts all objects in an <kbd>Collection</kbd>.
+     * @return int The number of objects in <kbd>Collection</kbd>.
      */
     public function count() {
         return count($this->_objects);
     }
     
     /**
-     * Returns the objects of the <kbd>ArrayMap<kbd> into an <kbd>array</kbd>.
+     * Returns the objects of the <kbd>Collection<kbd> into an <kbd>array</kbd>.
      * 
      * @return array An array of objects.
      */
@@ -169,9 +170,9 @@ class Collection extends Iterable implements JSONable {
     
     /**
      * Override <kbd>Object::getObjectProperties()</kbd> an return the current
-     * instance of <kbd>ArrayMap</kbd>.
+     * instance of <kbd>Collection</kbd>.
      * 
-     * @return ArrayMap This object.
+     * @return Collection This object.
      */
     public function getObjectProperties() {
         return $this;
@@ -187,7 +188,7 @@ class Collection extends Iterable implements JSONable {
      * @param array $_array An array to merge.
      * @param type $_overwrite If TRUE appends the new array a the end, otherwise
      *                      overwrites any double value.
-     * @return ArrayMap An array map.
+     * @return Collection An array map.
      */    
     public function union(Collection $Collection, $_overwrite = true) {
         if ($_overwrite)

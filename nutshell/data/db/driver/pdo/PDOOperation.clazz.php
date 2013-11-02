@@ -2,7 +2,7 @@
 namespace nutshell\data\db\driver\pdo;
 
 use \PDO as PDO;
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\lang\Map;
 use nutshell\data\db\DatabaseOperation;
 use nutshell\data\db\Database;
@@ -88,7 +88,7 @@ class PDOOperation extends DatabaseOperation {
         $this->execute();
 
         // create collection of rows
-        $FetchedResult = new ArrayMap();
+        $FetchedResult = new Collection();
         foreach ($this->_Statement->fetchAll(PDO::FETCH_ASSOC) as $row) {
             if ($row!=null) {
                $FetchedResult->add(new Map($row));

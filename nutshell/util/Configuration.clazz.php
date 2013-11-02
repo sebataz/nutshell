@@ -2,7 +2,7 @@
 namespace nutshell\util;
 
 use nutshell\lang\Clazz;
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\lang\halt\Halt;
 use nutshell\data\file\FileNotFound;
 
@@ -28,15 +28,15 @@ use nutshell\data\file\FileNotFound;
 class Configuration extends Clazz {
     
     /**
-     * Holds all the configuration entry into an <kbd>ArrayMap</kbd>.
+     * Holds all the configuration entry into an <kbd>Collection</kbd>.
      * 
-     * @var ArrayMap An array map of configuration values.
+     * @var Collection An array map of configuration values.
      */
     private static $_Configuration;
     
     /**
      * Loads the configuration file and creates a singleton instance of an
-     * <kbd>ArrayMap</kbd> containing the whole configuration.
+     * <kbd>Collection</kbd> containing the whole configuration.
      * 
      * @param string $_config_file Path to configuration file.
      * @throws FileNotFound Thrown if configuration file is not found.
@@ -49,7 +49,7 @@ class Configuration extends Clazz {
         
         // create singleton instance
         if (!self::$_Configuration)
-            self::$_Configuration = new ArrayMap();
+            self::$_Configuration = new Collection();
         
         // create configuration
         include $_config_file;

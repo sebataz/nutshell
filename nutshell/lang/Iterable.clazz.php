@@ -39,7 +39,7 @@ abstract class Iterable extends Object implements Iterator {
      * @return mixed The current element.
      */
     public function current() {
-        return $this->getObjectProperties()->{$this->getObjectProperties()->getKeys($this->_position)};
+        return $this->getObjectProperties()->get($this->getObjectProperties()->getKeys($this->_position));
     }
 
     /**

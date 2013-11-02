@@ -18,7 +18,7 @@ $QueryBuilder = new nutshell\data\db\QueryBuilder($Connection);
 /*
  *  #2. create a new table.
  */
-$TableColumns = new nutshell\lang\ArrayMap();
+$TableColumns = new nutshell\lang\Collection();
 $TableColumns->add('ID', 'INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY');
 $TableColumns->add('Text', 'VARCHAR(200)');
 
@@ -27,7 +27,7 @@ $Connection->newOperation()->createTable('Example', $TableColumns);
 /*
  * #3: insert a row
  */
-$ColumnValues = new nutshell\lang\ArrayMap();
+$ColumnValues = new nutshell\lang\Collection();
 $ColumnValues->add('Text', 'entry #0');
 
 $QueryBuilder->insert('Example', $ColumnValues)->send();
@@ -44,7 +44,7 @@ foreach ($Collection as $Row) {
 /*
  * #5: update a row
  */
-$ColumnValues = new nutshell\lang\ArrayMap();
+$ColumnValues = new nutshell\lang\Collection();
 $ColumnValues->add('Text', 'entry #1');
 
 $QueryBuilder->update('Example', $ColumnValues)->send();

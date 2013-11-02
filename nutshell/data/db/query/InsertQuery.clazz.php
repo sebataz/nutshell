@@ -1,7 +1,7 @@
 <?php
 namespace nutshell\data\db\query;
 
-use nutshell\lang\ArrayMap;
+use nutshell\lang\Collection;
 use nutshell\data\db\DatabaseOperation;
 use nutshell\data\db\query\statement\PreparedStatement;
 
@@ -23,9 +23,9 @@ class InsertQuery extends PreparedStatement {
      * 
      * @param DatabaseOperation $_Operation A new database operation.
      * @param string $_table The table name.
-     * @param ArrayMap $_Values A collection of column and value to insert.
+     * @param Collection $_Values A collection of column and value to insert.
      */
-    public function __construct(DatabaseOperation $_Operation, $_table, ArrayMap $_Values) {
+    public function __construct(DatabaseOperation $_Operation, $_table, Collection $_Values) {
         parent::__construct($_Operation, 'INSERT INTO ' . $_table
                           . ' (' . implode(', ', $_Values->getKeys()) . ')'
                           . ' VALUES (:' . implode(', :', $_Values->getKeys()) . ')');
