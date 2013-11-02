@@ -53,7 +53,7 @@ class Configuration extends Clazz {
         
         // create configuration
         include $_config_file;
-        self::$_Configuration->mergeWith($cfg);
+        self::$_Configuration->union(new Collection($cfg));
     }
     
     /**

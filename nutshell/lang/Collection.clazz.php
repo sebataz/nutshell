@@ -88,6 +88,10 @@ class Collection extends Iterable implements JSONable {
         return $this->_objects[$_key];
     }
     
+    public function __get($_key) {
+        return $this->get($_key);
+    }
+    
 	
     /**
      * Returns the value at the index defined by <var>$_key</var> or 
@@ -190,12 +194,13 @@ class Collection extends Iterable implements JSONable {
      *                      overwrites any double value.
      * @return Collection An array map.
      */    
-    public function union(Collection $Collection, $_overwrite = true) {
+    public function union(Collection $_Collection, $_overwrite = true) {
         if ($_overwrite)
-            $temp_array = array_merge_recursive($this->toArray(), $Collection->toArray());
+            $temp_array = array_merge_recursive($this->toArray(), $_Collection->toArray());
         else 
-            $temp_array = $this->toArray() + $Collection->toArray();
+            $temp_array = $this->toArray() + $_Collection->toArray();
         
+        $this->_objects = $temp_array;
         return new self($temp_array);
     }
     
