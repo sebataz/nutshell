@@ -25,7 +25,10 @@ final class Nutshell {
 //----------------------------------------------------------------------------//
 //                          main runtime settings                             //
 //----------------------------------------------------------------------------//
-error_reporting(E_ALL);
+## PHP settings
+ini_set('error_reporting', E_ALL);
+
+## Constants
 define('DS', DIRECTORY_SEPARATOR);
 
 

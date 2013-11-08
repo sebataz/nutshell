@@ -1,6 +1,8 @@
 <?php
 namespace nutshell\util;
 
+use nutshell\lang\Object;
+
 /**
  * <b>Timer.clazz.php</b>: script timer
  * 
@@ -13,7 +15,7 @@ namespace nutshell\util;
  * @version 0.0
  * @since 2010-11-07
  */
-class Timer extends \nutshell\lang\Object {
+class Timer extends Object {
     
     /**
      * The start time is set when the class is istantiated.
