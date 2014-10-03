@@ -10,3 +10,7 @@ sebataz <sebastien.rigoni@gmail.com>
 # Description: a php framework
 # Features: - class autoloader
             - basic classes
+            
+            
+Documentation at: http://nutshell.webdive.ch/documentation
+Live example at http://nutshell.webdive.ch/
